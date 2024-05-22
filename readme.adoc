@@ -1,9 +1,10 @@
 = VR Avatar Utilities
 :icons: font
 
-
 A growing collection of utilities that I have created to assist my workflows
 working on optimizing and creating custom content for VR avatars in Blender.
+
+link:https://foxcapades.github.io/blender-vr-avatar-utils/v0.1.0/[📖 Documentation]
 
 Developed against Blender 4.1.1.  May technically be compatible with previous
 Blender versions but has not been tested on any.
@@ -11,7 +12,7 @@ Blender versions but has not been tested on any.
 == Features
 
 This plugin adds new collapsible panels titled "VR Avatar Utils" to the "Data"
-tab in the "Armature" and "Mesh" context.
+tab in the "Armature" and "Mesh" contexts.
 
 === Armatures
 
