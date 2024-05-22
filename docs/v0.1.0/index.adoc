@@ -1,5 +1,4 @@
 = VR Avatar Utils - v0.1.0
-Elizabeth Paige Harper <foxcapades.io@gmail.com>
 :stylesdir: ../common/css
 :stylesheet: slate.css
 :icons: font
