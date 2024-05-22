@@ -6,3 +6,7 @@ ZIP_NAME = fxcpds-vr-avatar-utils-v$(PLUGIN_VERSION).zip
 build:
 	@mkdir -p build
 	@cd src && zip -r $(ZIP_NAME) $(PLUGIN_NAME) && mv $(ZIP_NAME) ../build
+
+.PHONY: docs
+docs:
+	@cd docs/v0.1.0 && asciidoctor -o index.html index.adoc

@@ -6,17 +6,17 @@
 :toc: left
 :link-skp: https://github.com/MichaelGlenMontague/shape_keys_plus[Shape Keys+]
 :abbr-vau: pass:[<abbr title="VR Avatar Utils">VAU</abbr>]
-// :toclevels: 3
 
 The following documents the options and features included in the VR Avatar Utils
 ({abbr-vau}) Blender addon.
+
 
 == Armatures
 
 === Bone Rotation Mode Normalization
 
 Normalizes the transform rotation mode on all bones in an armature to the chosen
-mode value.
+mode value without changing the rotations of the affected bones.
 
 [TIP]
 --
