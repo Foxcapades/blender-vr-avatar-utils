@@ -1,10 +1,6 @@
 = VR Avatar Utilities
 :icons: font
 
-// GitHub Icon Overrides
-ifdef::env-github[]
-:tip-caption: :bulb:
-endif::[]
 
 A growing collection of utilities that I have created to assist my workflows
 working on optimizing and creating custom content for VR avatars in Blender.
@@ -24,18 +20,6 @@ tab in the "Armature" and "Mesh" context.
 Allows converting the transform rotation mode of all bones in an armature to a
 target value without altering the rotation.
 
-[TIP]
---
-Why?::
-This is particularly useful when applying poses or pose assets to an armature as
-poses do not apply correctly with differing rotation modes.  From personal
-experience, many avatar bases come with bone rotations seemingly set at random
-for various bones in the armature.
-+
-For example, an avatar base I recently worked on had 113 bones with the rotation
-mode 'quaternion' while 6 are set to 'xyz euler'.
---
-
 
 === Meshes
 
@@ -44,29 +28,10 @@ mode 'quaternion' while 6 are set to 'xyz euler'.
 Synchronizes the values of shape keys on the current mesh with matching shape
 keys on other meshes in the scene or file.
 
-[TIP]
---
-Why?::
-When working with clothing or accessories for an avatar base it can be useful to
-have the ability to sync shape keys for avatar options such as height or weight
-to accessories that may be affected by those options.
-
-Can't you just use drivers?::
-You can.  Drivers are a far more powerful tool, however they require a lot of
-work up front to get to set up.  If you are comfortable using drivers or plan on
-doing extensive work on an avatar, then drivers may be worth the effort, but for
-simple modifications or accessory creation drivers are likely overkill.
---
-
 
 ==== Rename Shape Keys
 
 Allows mass renaming of shape keys across all meshes in the scene or file.
-
-[IMPORTANT]
---
-Shape keys names are case-sensitive!
---
 
 == Development
 
