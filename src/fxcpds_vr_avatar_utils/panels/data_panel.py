@@ -49,6 +49,8 @@ def _draw_global_options(layout: bpy.types.UILayout, props: PluginProperties, ki
 def _draw_for_mesh(context: Context, layout: bpy.types.UILayout, props: PluginProperties) -> None:
     _draw_sync_shape_keys(context, layout, props)
     layout.separator()
+    _draw_shape_key_inversion(layout, props)
+    layout.separator()
     _draw_rename_shape_keys(layout, props)
 
 
@@ -67,8 +69,8 @@ def _draw_sync_shape_keys(context: Context, layout: bpy.types.UILayout, props: P
     col = layout.box().column()
 
     col.label(text='Sync Shape Keys', icon='UV_SYNC_SELECT')
-    col.separator()
 
+    col.separator()
     col.prop(data=props, property=PluginProperties.PROP_NAME_SYNC_IGNORE_MUTED)
 
     if Compatibility.have_shape_keys_plus(context):
@@ -79,7 +81,6 @@ def _draw_sync_shape_keys(context: Context, layout: bpy.types.UILayout, props: P
         col.prop(data=props, property=PluginProperties.PROP_NAME_SYNC_IGNORE_LOCKED)
 
     col.separator()
-
     col.operator(ShapeKeySyncOp.bl_idname)
 
 

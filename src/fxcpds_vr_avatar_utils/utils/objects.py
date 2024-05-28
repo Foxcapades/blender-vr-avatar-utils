@@ -39,7 +39,7 @@ def is_usable_mesh(obj: Object) -> bool:
 
 
 def is_keyed_mesh(obj: Object) -> bool:
-    return is_keyed_mesh(obj) and cast(bpy.types.Mesh, obj.data).shape_keys is not None
+    return is_usable_mesh(obj) and cast(bpy.types.Mesh, obj.data).shape_keys is not None
 
 
 def select_only(obj: Object, ctx: Context) -> None:

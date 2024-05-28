@@ -116,6 +116,12 @@ def _execute(c: 'InverterContext') -> None:
     # Join the duplicate to the target object as a new shape key.
     bpy.ops.object.join_shapes()
 
+    # Remove the toggle key (if present) so we can safely rename the new toggle
+    # key to the target name.
+    if c.toggle_name in c.key_blocks:
+        c.object.active_shape_key_index = c.key_blocks.find(c.toggle_name)
+        bpy.ops.object.shape_key_remove()
+
     # Rename the new shape key.
     new_key_idx = len(c.key_blocks) - 1
     c.key_blocks[new_key_idx].name = c.toggle_name
