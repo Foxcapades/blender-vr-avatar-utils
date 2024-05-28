@@ -119,6 +119,3 @@ def _draw_shape_key_inversion(context: Context, layout: bpy.types.UILayout, prop
     row = col.row()
     row.operator(ShapeKeyInvertOp.bl_idname)
     row.enabled = ShapeKeyInvertOp.poll(context)
-
-    if props.dry_run:
-        col.enabled = False

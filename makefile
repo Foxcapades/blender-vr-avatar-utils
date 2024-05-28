@@ -9,4 +9,4 @@ build:
 
 .PHONY: docs
 docs:
-	@cd docs/v0.1.0 && asciidoctor -o index.html index.adoc
+	@cd docs/v$(PLUGIN_VERSION) && asciidoctor -o index.html index.adoc

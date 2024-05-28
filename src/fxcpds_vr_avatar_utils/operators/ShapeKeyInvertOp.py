@@ -39,8 +39,10 @@ class ShapeKeyInvertOp(Operator):
             if len(steps) == 0:
                 col.label(text='Done')
             else:
-                for i, step in enumerate(steps):
+                i = 1
+                for step in steps:
                     col.label(text=f'{i:02} - {step}')
+                    i += 1
 
         title: str
         icon: Icon
@@ -85,7 +87,7 @@ class ShapeKeyInvertOp(Operator):
         object_name = target.name
 
         if props.shape_key_inversion_create_copy:
-            dup_name = object_name + ".dup"
+            dup_name = _safe_object_name(target, context)
             steps.append(f"create duplicate of object '{object_name}' ({dup_name})")
             steps.append(f"hide object '{object_name}'")
             object_name = dup_name
@@ -179,6 +181,17 @@ def _safe_toggle_shape_key_name(obj: Object, new_basis_name: str) -> str:
         n += 1
 
 
+def _safe_object_name(obj: Object, ctx: Context) -> str:
+    n = 1
+    while True:
+        attempt = obj.name + f'.{n:03}'
+
+        if attempt not in ctx.blend_data.objects:
+            return attempt
+
+        n += 1
+
+
 def _build_steps(
     c: InverterContext,
     object_name: str = None,
@@ -186,15 +199,16 @@ def _build_steps(
     if not object_name:
         object_name = c.object.name
 
-    yield f"create a temporary duplicate of '{object_name}'", __step_make_temp_dup
-    yield f"zero irrelevant shape keys on the temp duplicate", __step_zero_shape_keys
-    yield f"focus selection on '{object_name}'", __step_select_target_object
+    tmp_name = 'tmp.object'
+
+    yield f"create a temporary duplicate of '{object_name}' ({tmp_name})", __step_make_temp_dup
+    yield f"zero irrelevant shape keys on '{tmp_name}'", __step_zero_shape_keys
     yield f"apply shape key '{c.new_basis}' to '{object_name}' basis", __step_apply_new_basis
     if c.remove_merged:
         yield f"remove shape key '{c.new_basis}' from '{object_name}'", __step_remove_merged
-    yield f"apply temp duplicate object as new shape key on object '{object_name}'", __step_apply_dup_as_shape_key
+    yield f"apply '{tmp_name}' as new shape key on object '{object_name}'", __step_apply_dup_as_shape_key
     yield f"rename new shape key to '{c.toggle_name}'", __step_rename_shape_key
-    yield f"delete the temp duplicate object", __step_delete_duplicate_object
+    yield f"delete '{tmp_name}'", __step_delete_duplicate_object
     yield f"select shape key '{c.toggle_name}' on object '{object_name}'", __step_select_new_shape_key
 
 
@@ -212,12 +226,10 @@ def __step_zero_shape_keys(c: InverterContext) -> None:
     _zero_shape_keys(c.duplicate_object, c.toggle_name)
 
 
-def __step_select_target_object(c: InverterContext) -> None:
-    """Select the operation target object."""
+def __step_apply_new_basis(c: InverterContext) -> None:
+    # Select the operation target object
     select_only(c.object, c.context)
 
-
-def __step_apply_new_basis(c: InverterContext) -> None:
     # Select the object's basis key
     c.object.active_shape_key_index = 0
 

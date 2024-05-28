@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   fill="#000000"
+   width="800px"
+   height="800px"
+   viewBox="0 0 48 48"
+   enable-background="new 0 0 48 48"
+   id="Layer_3"
+   version="1.1"
+   xml:space="preserve"
+   sodipodi:docname="text-field-formfield-svgrepo-com.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs3"><linearGradient
+     id="swatch3"
+     inkscape:swatch="solid"><stop
+       style="stop-color:#000000;stop-opacity:1;"
+       offset="0"
+       id="stop3" /></linearGradient></defs><sodipodi:namedview
+   id="namedview3"
+   pagecolor="#505050"
+   bordercolor="#ffffff"
+   borderopacity="1"
+   inkscape:showpageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="1"
+   inkscape:deskcolor="#505050"
+   inkscape:zoom="2.36375"
+   inkscape:cx="399.78847"
+   inkscape:cy="400"
+   inkscape:window-width="3840"
+   inkscape:window-height="2091"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_3" />
+
+<g
+   id="g3">
+
+<polygon
+   points="8,9 10,9 10,12 10,16 10,39 8,39 8,42 16,42 16,39 14,39 14,16 14,12 14,9 16,9 16,6 8,6  "
+   id="polygon1"
+   style="fill:#78c9ee;fill-opacity:1" />
+
+<polygon
+   points="4,16 7.021,16 7.021,12 0,12 0,36 7.042,36 7.042,32 4,32  "
+   id="polygon2"
+   style="fill:#78c9ee;fill-opacity:1" />
+
+<polygon
+   points="16.979,12 16.979,16 44,16 44,32 16.958,32 16.958,36 48,36 48,12  "
+   id="polygon3"
+   style="fill:#78c9ee;fill-opacity:1" />
+
+</g>
+
+</svg>
