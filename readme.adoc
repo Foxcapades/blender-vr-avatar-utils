@@ -91,7 +91,7 @@ restarted to start using the updated plugin.
 === Removing
 
 . From Blender, open the Preferences window via
-\$$\{\color\{green}Edit > Preferences}$$.
+\$${\color{green}Edit > Preferences}$$.
 
 . In the preferences window select the 'Add-ons' section from the list of
 sections on the left.
