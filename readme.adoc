@@ -1,10 +1,14 @@
 = VR Avatar Utilities
 :icons: font
 
+:plugin-version: 0.2.0
+
+:url-gh-repo: https://github.com/Foxcapades/blender-vr-avatar-utils
+
 A growing collection of utilities that I have created to assist my workflows
 working on optimizing and creating custom content for VR avatars in Blender.
 
-link:https://foxcapades.github.io/blender-vr-avatar-utils/v0.1.0/[📖 Documentation]
+link:https://foxcapades.github.io/blender-vr-avatar-utils/v{plugin-version}/[📖 *Documentation*]
 
 Developed against Blender 4.1.1.  May technically be compatible with previous
 Blender versions but has not been tested on any.
@@ -30,9 +34,102 @@ Synchronizes the values of shape keys on the current mesh with matching shape
 keys on other meshes in the scene or file.
 
 
+==== Invert Shape Keys
+
+Allows inverting a shape key, making the shape key value the new basis and
+creating a new shape key which returns the object to its former basis state (or
+alternatively a custom toggle state).
+
+
 ==== Rename Shape Keys
 
 Allows mass renaming of shape keys across all meshes in the scene or file.
+
+
+== Installation Instructions
+
+=== New Installation
+
+General Blender Add-on information, see the https://docs.blender.org/manual/en/latest/editors/preferences/addons.html[Blender docs].
+
+. Download the {url-gh-repo}/releases/latest[latest release] zip file (named
+`fxcpds-vr-avatar-utils-v{plugin-version}.zip` or similar).
+
+. From Blender, open the Preferences window via
+\$$\{\color\{green}Edit > Preferences}$$.
+
+. In the Preferences window select the 'Add-ons' section from the list of
+sections on the left.
+
+. Click the 'Install...' button near the top right of the Add-ons section.
+
+. Browse to and select the zip file downloaded in step #1.
+
+. Check the checkbox next to the plugin with the text: "Object: Foxcapades' VR
+Avatar Utils" to enable the plugin.
++
+[NOTE]
+--
+Occasionally, the Add-ons Preferences section will not automatically filter to
+the newly added addon.  In this case, use the filter box to type in the plugin
+name to find the plugin to enable.
+--
+
+
+=== Updating
+
+Currently, the plugin update process is a bit obnoxious in that Blender must be
+restarted to start using the updated plugin.
+
+. Follow the <<Removing>> instructions.
+
+. Restart Blender
+
+. Follow the <<New Installation>> instructions.
+
+
+=== Removing
+
+. From Blender, open the Preferences window via
+\$$\{\color\{green}Edit > Preferences}$$.
+
+. In the preferences window select the 'Add-ons' section from the list of
+sections on the left.
+
+. Using the search box near the top right of the Add-ons section, type in the
+name of the addon to filter the addon list to locate this addon.
+
+. Click the ▶ icon on the left of the addon entry in the list to expand the
+addon details.
+
+. At the bottom of the expanded addon details, click the button labeled
+"Remove".
+
+
+== Change Log
+
+[cols='1,9a']
+|===
+| v0.2.0
+| .Features:
+
+* Shape Key Inversion
+
+.Changes:
+
+* Minor phrasing tweaks in help texts.
+
+| v0.1.0
+| Initial release.
+
+.Includes:
+* Bone Rotation Normalization
+* Shape Key Value Synchronization
+* Shape Key Bulk Renaming
+|===
+
+
+
 
 == Development
 
