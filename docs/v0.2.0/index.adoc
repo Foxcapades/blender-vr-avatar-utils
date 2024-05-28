@@ -190,7 +190,7 @@ new toggle key which can be used to return the mesh to its former basis or some
 other shape.
 
 .Basic Demonstration
-video::https://youtu.be/4IkBFzpjTkM[width=970,align=center]
+video::4IkBFzpjTkM[youtube,width=970,height=540,align=center]
 
 To enable updating or reworking objects with existing toggles, selecting a
 toggle key that already exists on the object will keep that toggle value rather
