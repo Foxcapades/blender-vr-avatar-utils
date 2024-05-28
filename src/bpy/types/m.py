@@ -13,6 +13,10 @@ from r import ReadOnlyInteger
 from u import UILayout, UVLoopLayers
 
 
+MeshDelimitMode = Literal['NORMAL', 'MATERIAL', 'SEAM', 'SHARP', 'UV']
+
+MeshSelectMode = Literal['VERT', 'EDGE', 'FACE']
+
 MotionpathDisplayType = Literal['CURRENT_FRAME', 'RANGE']
 
 MotionpathRange = Literal['KEYS_ALL', 'KEYS_SELECTED', 'SCENE', 'MANUAL']

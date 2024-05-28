@@ -1,4 +1,4 @@
-from typing import Any, Callable, Literal, Sequence
+from typing import Any, Callable, Generator, Literal, Sequence
 import bpy as bpy
 
 PropertyFlag = Literal[
@@ -87,6 +87,9 @@ def StringProperty(
     update: Callable[[Any, bpy.context], None] | None = None,
     get: Callable[[Any], str] | None = None,
     set: Callable[[Any, str], None] | None = None,
-    search: Callable[[Any, bpy.context, str], Sequence[str | tuple[str, str]]] | None = None,
+    search: Callable[
+        [Any, bpy.context, str],
+        Sequence[str | tuple[str, str]] | Generator[str | tuple[str, str], Any, Any]
+    ] | None = None,
     search_options: set[Literal['SORT', 'SUGGESTION']] = set('SUGGESTION'),
 ) -> type[str]: pass

@@ -1,6 +1,6 @@
 import bpy
 
-from ..utils.shape_keys import shape_key_search_cb
+from ..utils.shape_keys import non_default_shape_key_search_cb, shape_key_search_cb
 
 
 # noinspection PyTypeHints
@@ -14,8 +14,10 @@ class PluginProperties(bpy.types.PropertyGroup):
     dry_run: bpy.props.BoolProperty(
         name='Dry Run',
         description=(
-            'Decides whether changes should be performed or if the plugin should perform a \'dry run\' where it makes '
-            'no changes and instead reports the changes it would have made if Dry Run was disabled'
+            'Decides whether changes should be performed or if the plugin '
+            'should perform a \'dry run\' where it makes no changes and '
+            'instead reports the changes it would have made if Dry Run was '
+            'disabled'
         ),
         options=set(),
     )
@@ -31,8 +33,9 @@ class PluginProperties(bpy.types.PropertyGroup):
     lock_to_scene: bpy.props.BoolProperty(
         name='This Scene Only',
         description=(
-            'Whether bulk operations should be locked to objects in the current scene only.  If disabled, bulk '
-            'operations will apply to relevant objects in all scenes'
+            'Whether bulk operations should be locked to objects in the '
+            'current scene only.  If disabled, bulk operations will apply to '
+            'relevant objects in all scenes'
         ),
         default=True,
         options=set(),
@@ -48,7 +51,10 @@ class PluginProperties(bpy.types.PropertyGroup):
 
     key_rename_from: bpy.props.StringProperty(
         name='From',
-        description='Original shape key name that will be changed to the value of the \'To\' field',
+        description=(
+            'Original shape key name that will be changed to the value of the '
+            '\'To\' field'
+        ),
         options=set(),
         search=shape_key_search_cb,
         search_options=set(),
@@ -58,12 +64,74 @@ class PluginProperties(bpy.types.PropertyGroup):
 
     key_rename_to: bpy.props.StringProperty(
         name='To',
-        description='New shape key name that will be used as the replacement for the \'From\' field value',
+        description=(
+            'New shape key name that will be used as the replacement for the '
+            '\'From\' field value'
+        ),
         options=set()
     )
 
     #
     # endregion Shape Key Renaming
+
+    # region Shape Key Inversion
+    #
+
+    PROP_NAME_SK_INVERT_BASIS = 'shape_key_inversion_basis_replacement'
+
+    shape_key_inversion_basis_replacement: bpy.props.StringProperty(
+        name='New Basis',
+        description=(
+            'Shape key that will be used to form the new basis.  This key\'s'
+            'value will be applied to the object\'s actual basis'
+        ),
+        options=set(),
+        search=non_default_shape_key_search_cb,
+        search_options=set()
+    )
+
+    PROP_NAME_SK_INVERT_TOGGLE = 'shape_key_inversion_toggle'
+
+    shape_key_inversion_toggle: bpy.props.StringProperty(
+        name='Toggle Key',
+        description=(
+            'Name of the key that will be used as or become the the toggling '
+            'shape key that can be used to restore the object to a former or '
+            'alternative state.  If the key already exists, then it\'s current '
+            'value will be used as the toggle value.  If the key does not '
+            'already exist, a new key will be created with the default object '
+            'state (with no shape keys) will be used as the toggle value'
+        ),
+        options=set(),
+        search=non_default_shape_key_search_cb,
+    )
+
+    PROP_NAME_SK_INVERT_REMOVE_MERGED = 'shape_key_inversion_remove_merged'
+
+    shape_key_inversion_remove_merged: bpy.props.BoolProperty(
+        name="Remove 'New Basis'",
+        description=(
+            'Whether the \'New Basis\' shape key should be removed from this '
+            'object once the invert operation has been successfully completed'
+        ),
+        options=set(),
+        default=True,
+    )
+
+    PROP_NAME_SK_INVERT_CREATE_COPY = 'shape_key_inversion_create_copy'
+
+    shape_key_inversion_create_copy: bpy.props.BoolProperty(
+        name='Create New Object',
+        description=(
+            'Whether this operation should create a new object on which to '
+            'perform the changes, leaving this object unchanged'
+        ),
+        options=set(),
+        default=True,
+    )
+
+    #
+    # endregion Shape Key Inversion
 
     # region Shape Key Sync
     #
@@ -73,10 +141,11 @@ class PluginProperties(bpy.types.PropertyGroup):
     key_sync_ignore_muted: bpy.props.BoolProperty(
         name='Ignore Muted',
         description=(
-            'Whether muted shape keys on this object should be ignored when synchronizing shape key values to other '
-            'objects in the scene.  If a shape key on this object is muted, it will not be considered when '
-            'synchronizing values to other objects.  Shape keys that are muted on other objects in this scene may '
-            'still be updated'
+            'Whether muted shape keys on this object should be ignored when '
+            'synchronizing shape key values to other objects in the scene.  If '
+            'a shape key on this object is muted, it will not be considered '
+            'when synchronizing values to other objects.  Shape keys that are '
+            'muted on other objects in this scene may still be updated'
         ),
         default=True,
         options=set(),
@@ -87,8 +156,8 @@ class PluginProperties(bpy.types.PropertyGroup):
     key_sync_ignore_locked: bpy.props.BoolProperty(
         name='Ignore Locked',
         description=(
-            'Whether locked shape keys on other objects in this scene should be ignored when synchronizing shape key '
-            'values from this object'
+            'Whether locked shape keys on other objects in this scene should '
+            'be ignored when synchronizing shape key values from this object'
         ),
         default=True,
         options=set(),
@@ -102,7 +171,9 @@ class PluginProperties(bpy.types.PropertyGroup):
 
     key_sync_skp_only_from_selected: bpy.props.BoolProperty(
         name='Only from Selected',
-        description='Only synchronize values from those currently selected on this mesh',
+        description=(
+            'Only synchronize values from those currently selected on this mesh'
+        ),
         options=set(),
     )
 
@@ -110,7 +181,10 @@ class PluginProperties(bpy.types.PropertyGroup):
 
     key_sync_skp_only_to_selected: bpy.props.BoolProperty(
         name='Only to Selected',
-        description='Only synchronize values to those currently selected on other meshes',
+        description=(
+            'Only synchronize values to those currently selected on other '
+            'meshes'
+        ),
         options=set(),
     )
 

@@ -5,4 +5,4 @@ from . import types
 from ctx import AnyContext
 
 
-context = AnyContext
+context: AnyContext

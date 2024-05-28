@@ -2,7 +2,7 @@ bl_info = {
     "name":        "Foxcapades' VR Avatar Utils",
     "description": "Miscellaneous utilities for aiding in work on VR avatars.",
     "author":      "Elizabeth Paige Harper",
-    "version":     (0, 1, 0),
+    "version":     (0, 2, 0),
     "category":    "Object",
     "blender":     (4, 1, 1),
 }

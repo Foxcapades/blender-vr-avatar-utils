@@ -1,6 +1,9 @@
-try:
-    from bpy.types import o
+import bpy
 
-    ObjectType = o.ObjectType
+try:
+    Context = bpy.AnyContext
+    ObjectType = bpy.types.ObjectType
 except Exception:
+    from bpy.types import Context
+
     ObjectType = str

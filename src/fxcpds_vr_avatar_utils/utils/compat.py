@@ -1,10 +1,11 @@
 import bpy
-import sys
+
+from .aliases import Context
 
 
 class Compatibility:
     @staticmethod
-    def have_shape_keys_plus(context: bpy.context) -> bool:
+    def have_shape_keys_plus(context: Context) -> bool:
         """
         Tests whether the current Blender instance has Shape Keys+ installed.
         """
