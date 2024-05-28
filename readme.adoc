@@ -108,6 +108,11 @@ addon details.
 
 [cols='1,9a']
 |===
+| v0.2.1
+| * When the 'New Basis' key is the same as the 'Toggle Key' value for shape key
+inversion, the shape from that shape key **WILL NOT** be used as the new toggle
+key shape.  The original basis will be used as the new toggle key shape.
+
 | v0.2.0
 | .Features:
 
