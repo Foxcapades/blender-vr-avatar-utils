@@ -1,4 +1,4 @@
-= VR Avatar Utils - v0.2.0
+= VR Avatar Utils - v0.2.x
 :stylesdir: ../common/css
 :stylesheet: slate.css
 :icons: font
@@ -189,13 +189,6 @@ image::img/shape-key-sync-2.png[align=center]
 new toggle key which can be used to return the mesh to its former basis or some
 other shape.
 
-.Basic Demonstration
-video::4IkBFzpjTkM[youtube,width=970,height=540,align=center]
-
-To enable updating or reworking objects with existing toggles, selecting a
-toggle key that already exists on the object will keep that toggle value rather
-than using the original basis as the toggle value.
-
 [TIP]
 --
 Why?::
@@ -204,6 +197,19 @@ to use shape keys as 'toggles' for those accessories.  In this situation it is
 desirable to have the basis for those objects to be a hidden state with the
 toggle shape key returning the accessory to its 'normal' state.
 --
+
+To enable updating or reworking objects with existing toggles, selecting a
+toggle key that already exists on the object will keep that toggle value rather
+than using the original basis as the toggle value.
+
+As a special case, when the value of 'New Basis' and 'Toggle Key' are the same,
+the value of the target key **will not** become the value of the 'new' toggle
+key.  The existing key will be replaced with a new key of the same name whose
+shape is the former shape of the target object's basis.
+
+.Basic Demonstration
+// video::4IkBFzpjTkM[youtube,width=970,height=540,align=center]
+
 
 ==== Options
 

@@ -154,7 +154,7 @@ def _create_duplicate(obj: Object, ctx: Context) -> Object:
     return ctx.active_object
 
 
-def _zero_shape_keys(obj: Object, toggle_key: str) -> None:
+def _zero_shape_keys(obj: Object, toggle_key: str | None) -> None:
     key = cast(Mesh, obj.data).shape_keys
 
     for sk in key.key_blocks:
@@ -222,8 +222,8 @@ def __step_make_temp_dup(c: InverterContext) -> None:
 
 
 def __step_zero_shape_keys(c: InverterContext) -> None:
-    """Zero the duplicate's shape keys (except the toggle key, if present)"""
-    _zero_shape_keys(c.duplicate_object, c.toggle_name)
+    # Zero the duplicate's shape keys (except the toggle key, if present)
+    _zero_shape_keys(c.duplicate_object, None if c.new_basis == c.toggle_name else c.toggle_name)
 
 
 def __step_apply_new_basis(c: InverterContext) -> None:
