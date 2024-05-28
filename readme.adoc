@@ -55,8 +55,7 @@ General Blender Add-on information, see the https://docs.blender.org/manual/en/l
 . Download the {url-gh-repo}/releases/latest[latest release] zip file (named
 `fxcpds-vr-avatar-utils-v{plugin-version}.zip` or similar).
 
-. From Blender, open the Preferences window via
-\$$\{\color\{green}Edit > Preferences}$$.
+. From Blender, open the Preferences window via *Edit > Preferences*.
 
 . In the Preferences window select the 'Add-ons' section from the list of
 sections on the left.
@@ -90,8 +89,7 @@ restarted to start using the updated plugin.
 
 === Removing
 
-. From Blender, open the Preferences window via
-\$${\color{green}Edit > Preferences}$$.
+. From Blender, open the Preferences window via *Edit > Preferences*.
 
 . In the preferences window select the 'Add-ons' section from the list of
 sections on the left.
