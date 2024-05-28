@@ -189,6 +189,13 @@ image::img/shape-key-sync-2.png[align=center]
 new toggle key which can be used to return the mesh to its former basis or some
 other shape.
 
+.Basic Demonstration
+video::https://youtu.be/4IkBFzpjTkM[width=970,align=center]
+
+To enable updating or reworking objects with existing toggles, selecting a
+toggle key that already exists on the object will keep that toggle value rather
+than using the original basis as the toggle value.
+
 [TIP]
 --
 Why?::
