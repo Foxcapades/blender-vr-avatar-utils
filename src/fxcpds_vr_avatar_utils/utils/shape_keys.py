@@ -1,4 +1,5 @@
 from typing import cast, Generator, Sequence
+import re
 
 from .aliases import Context
 from .objects import is_keyed_mesh
@@ -51,7 +52,7 @@ def non_default_shape_key_search_cb(_, context: Context, edit_txt: str) -> Gener
 
     matches = shape_key_search_cb(_, context, edit_txt)
 
-    if len(matches) == 0:
+    if matches is None:
         return None
 
     default = cast(Mesh, context.object.data).shape_keys.key_blocks[0].name
@@ -63,7 +64,7 @@ def non_default_shape_key_search_cb(_, context: Context, edit_txt: str) -> Gener
     return None
 
 
-def shape_key_search_cb(_, context: Context, edit_txt: str) -> Sequence[str]:
+def shape_key_search_cb(_, context: Context, edit_txt: str) -> Generator[str, None, None]:
     """
     Shape key name search callback.
 
@@ -85,7 +86,7 @@ def shape_key_search_cb(_, context: Context, edit_txt: str) -> Sequence[str]:
         A list of zero or more matching shape key names.
     """
     if not is_keyed_mesh(context.object):
-        return []
+        return None
 
     mesh = cast(bpy.types.Mesh, context.object.data)
 
@@ -94,28 +95,46 @@ def shape_key_search_cb(_, context: Context, edit_txt: str) -> Sequence[str]:
 
     # If the stripped input text is empty, return everything.
     if len(edit_txt) == 0:
-        return mesh.shape_keys.key_blocks.keys()
+        for key in mesh.shape_keys.key_blocks.keys():
+            yield key
+
+        return None
 
     # Do case-insensitive searching.
     edit_txt = edit_txt.lower()
 
     # Output lists.  High is for high-significance matches, low for everything
     # else.
-    high = []
-    low = []
+    matches: list[tuple[int, str]] = []
 
     # Iterate through the shape key names to find matches.
     for key in mesh.shape_keys.key_blocks.keys():
-        lk = key.lower()
+        if key.startswith(edit_txt):
+            matches.append((1, key))
+        elif edit_txt in key:
+            matches.append((3, key))
+        else:
+            lk = key.lower()
 
-        if lk.startswith(edit_txt):
-            high.append(key)
-        elif edit_txt in lk:
-            low.append(key)
+            if lk.startswith(edit_txt):
+                matches.append((2, key))
+            elif edit_txt in lk:
+                matches.append((4, key))
+
+    if len(matches) == 0 and re.match('^\\w+$', edit_txt):
+        for key in mesh.shape_keys.key_blocks.keys():
+            lk = re.sub('\\W+', '',  key.lower())
+
+            if lk.startswith(edit_txt):
+                matches.append((1, key))
+            elif edit_txt in lk:
+                matches.append((2, key))
 
     # Sort the matches.
-    high.sort()
-    low.sort()
+    matches.sort()
+
+    for _, key in matches:
+        yield key
 
     # Return the combined match lists
-    return high + low
+    return None

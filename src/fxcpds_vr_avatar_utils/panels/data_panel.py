@@ -1,6 +1,6 @@
 from ..operators import BoneRotationNormalizeOp, ShapeKeyInvertOp, ShapeKeyRenameOp, ShapeKeySyncOp
 from ..properties import get_property_group, PluginProperties
-from ..utils import Compatibility
+from ..utils import Compatibility, is_keyed_mesh
 
 from .aliases import Context, ObjectType
 
@@ -16,7 +16,7 @@ class DataPanel(bpy.types.Panel):
 
     @classmethod
     def poll(cls, context: Context):
-        return context.object is not None and (context.object.type == 'MESH' or context.object.type == 'ARMATURE')
+        return context.object is not None and (is_keyed_mesh(context.object) or context.object.type == 'ARMATURE')
 
     def draw(self, context: Context):
         obj = context.object
@@ -49,7 +49,7 @@ def _draw_global_options(layout: bpy.types.UILayout, props: PluginProperties, ki
 def _draw_for_mesh(context: Context, layout: bpy.types.UILayout, props: PluginProperties) -> None:
     _draw_sync_shape_keys(context, layout, props)
     layout.separator()
-    _draw_shape_key_inversion(layout, props)
+    _draw_shape_key_inversion(context, layout, props)
     layout.separator()
     _draw_rename_shape_keys(layout, props)
 
@@ -101,7 +101,7 @@ def _draw_rename_shape_keys(layout: bpy.types.UILayout, props: PluginProperties)
     right.operator(ShapeKeyRenameOp.bl_idname)
 
 
-def _draw_shape_key_inversion(layout: bpy.types.UILayout, props: PluginProperties) -> None:
+def _draw_shape_key_inversion(context: Context, layout: bpy.types.UILayout, props: PluginProperties) -> None:
     col = layout.box().column()
 
     col.label(text='Shape Key Inversion', icon='FILE_REFRESH')
@@ -116,4 +116,9 @@ def _draw_shape_key_inversion(layout: bpy.types.UILayout, props: PluginPropertie
     row.prop(data=props, property=PluginProperties.PROP_NAME_SK_INVERT_CREATE_COPY)
     col.separator()
 
-    col.operator(ShapeKeyInvertOp.bl_idname)
+    row = col.row()
+    row.operator(ShapeKeyInvertOp.bl_idname)
+    row.enabled = ShapeKeyInvertOp.poll(context)
+
+    if props.dry_run:
+        col.enabled = False

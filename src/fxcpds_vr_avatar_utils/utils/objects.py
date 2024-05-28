@@ -43,13 +43,9 @@ def is_keyed_mesh(obj: Object) -> bool:
 
 
 def select_only(obj: Object, ctx: Context) -> None:
-    original_mode = obj.mode
-
-    bpy.ops.object.mode_set(mode='OBJECT')
+    if ctx.active_object is not None and ctx.active_object.mode != 'OBJECT':
+        bpy.ops.object.mode_set(mode='OBJECT')
 
     bpy.ops.object.select_all(action='DESELECT')
-
     obj.select_set(True)
     ctx.view_layer.objects.active = obj
-
-    bpy.ops.object.mode_set(mode=original_mode)
