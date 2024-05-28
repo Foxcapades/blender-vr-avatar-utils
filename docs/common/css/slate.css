@@ -74,6 +74,11 @@ video {
   text-align: center;
 }
 
+.videoblock > .title {
+  color: var(--off-white);
+  text-align: center;
+}
+
 .openblock.option {
   margin: 2em;
 }
