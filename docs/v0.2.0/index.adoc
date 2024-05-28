@@ -208,7 +208,7 @@ key.  The existing key will be replaced with a new key of the same name whose
 shape is the former shape of the target object's basis.
 
 .Basic Demonstration
-// video::4IkBFzpjTkM[youtube,width=970,height=540,align=center]
+video::4IkBFzpjTkM[youtube,width=970,height=540,align=center]
 
 
 ==== Options
