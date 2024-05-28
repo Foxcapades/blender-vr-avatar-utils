@@ -2696,3 +2696,7 @@ class CurvesModifier(s.SequenceModifier):
 
 class CurvesSculpt(p.Paint):
     pass
+
+
+class CyclesRenderLayerSettings(p.PropertyGroup):  # Undocumented type.
+    pass

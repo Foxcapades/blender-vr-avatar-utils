@@ -41,6 +41,17 @@ PreferenceSection = Literal[
 
 PropDynamicpaintType = Literal['CANVAS', 'BRUSH']
 
+ProportionalFalloff = Literal[
+    'SMOOTH',
+    'SPHERE',
+    'ROOT',
+    'INVERSE_SQUARE',
+    'SHARP',
+    'LINEAR',
+    'CONSTANT',
+    'RANDOM',
+]
+
 ProportionalFalloffCurveOnly = Literal['SMOOTH', 'SPHERE', 'ROOT', 'INVERSE_SQUARE', 'SHARP', 'LINEAR']
 
 

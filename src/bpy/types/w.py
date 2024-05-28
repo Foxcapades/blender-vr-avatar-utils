@@ -124,24 +124,59 @@ class Window(bpy_struct):
 
 # noinspection PyPropertyDefinition
 class WindowManager(ID):
+    """
+    Window manager data-block defining open windows and other user interface
+    data.
+    """
+
     addon_filter: str
+    """Filter add-ons by category"""
+
     addon_search: str
+    """Filter by add-on name, author & category"""
+
     addon_support: set[Literal['OFFICIAL', 'COMMUNITY']]
+    """
+    Display support level
+    
+    Options:
+    
+    * OFFICIAL – Officially supported.
+    * COMMUNITY – Maintained by community developers.
+    """
+
     poselib_previous_action: Action
+
     preset_name: str
+    """Name for new preset"""
+
     clipboard: str
+    """Clipboard text storage."""
 
     @property
-    def asset_path_dummy(self) -> str: pass
+    def asset_path_dummy(self) -> str:
+        """Full path to the Blender file containing the active asset"""
+        pass
     
     @property
-    def is_interface_locked(self) -> bool: pass
+    def is_interface_locked(self) -> bool:
+        """
+        If true, the interface is currently locked by a running job and data
+        shouldn't be modified from application timers. Otherwise, the running
+        job might conflict with the handler causing unexpected results or even
+        crashes.
+        """
+        pass
     
     @property
-    def keyconfigs(self) -> KeyConfigurations: pass
+    def keyconfigs(self) -> KeyConfigurations:
+        """Registered key configurations"""
+        pass
     
     @property
-    def operators(self) -> bpy_prop_collection[Operator]: pass
+    def operators(self) -> bpy_prop_collection[Operator]:
+        """Operator registry"""
+        pass
     
     @property
     def pose_assets(self) -> bpy_prop_collection[AssetHandle]: pass
@@ -156,7 +191,17 @@ class WindowManager(ID):
     def xr_session_state(self) -> XrSessionState: pass
 
     @classmethod
-    def fileselect_add(cls, operator: Operator): pass
+    def fileselect_add(cls, operator: Operator):
+        """
+        Opens a file selector with an operator.
+
+        The string properties 'filepath', 'filename', 'directory' and a 'files'
+        collection are assigned when present in the operator.
+
+        Args:
+            operator: Operator to call
+        """
+        pass
 
     @classmethod
     def modal_handler_add(cls, operator: Operator): pass

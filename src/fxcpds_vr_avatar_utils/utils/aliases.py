@@ -7,5 +7,5 @@ try:
 except Exception:
     import bpy
 
-    Context = type(bpy.context)
+    Context = bpy.types.Context
     ObjectType = str

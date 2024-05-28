@@ -2,7 +2,7 @@ from typing import cast, Iterable, Literal
 
 from ..properties import get_property_group, PluginProperties
 from ..utils import all_keys, scene_keys
-from .aliases import Icon
+from .aliases import Context, Icon
 
 from bpy.types import Key, Mesh, Object
 
@@ -18,7 +18,7 @@ class ShapeKeyRenamer:
     Shape key renaming process encapsulation.
     """
 
-    def __init__(self, context: bpy.context, props: PluginProperties):
+    def __init__(self, context: Context, props: PluginProperties):
         """
         Initializes a new _shapeKeyRenamerInstance instance.
 
@@ -144,7 +144,7 @@ class ShapeKeyRenameOp(bpy.types.Operator):
     bl_options = {'REGISTER', 'UNDO'}
     bl_description = 'Renames all matching shape keys'
 
-    def execute(self, context: bpy.context):
+    def execute(self, context: Context):
         props = get_property_group()
         runner = ShapeKeyRenamer(context, props)
 

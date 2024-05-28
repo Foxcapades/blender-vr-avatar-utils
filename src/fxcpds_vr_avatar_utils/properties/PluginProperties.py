@@ -1,6 +1,6 @@
 import bpy
 
-from ..utils.shape_keys import shape_key_search_cb
+from ..utils.shape_keys import non_default_shape_key_search_cb, shape_key_search_cb
 
 
 # noinspection PyTypeHints
@@ -64,6 +64,65 @@ class PluginProperties(bpy.types.PropertyGroup):
 
     #
     # endregion Shape Key Renaming
+
+    # region Shape Key Inversion
+    #
+
+    PROP_NAME_SK_INVERT_BASIS = 'shape_key_inversion_basis_replacement'
+
+    shape_key_inversion_basis_replacement: bpy.props.StringProperty(
+        name='New Basis',
+        description=(
+            'Shape key that will be used to form the new basis.  This key\'s value will be applied to the object\'s '
+            'actual basis.  This key will be removed at the end of the operation'
+        ),
+        options=set(),
+        search=non_default_shape_key_search_cb,
+        search_options=set()
+    )
+
+    PROP_NAME_SK_INVERT_TOGGLE = 'shape_key_inversion_toggle'
+
+    shape_key_inversion_toggle: bpy.props.StringProperty(
+        name='Toggle Key',
+        description=(
+            'Name of the key that will be used as or become the the toggling '
+            'shape key that can be used to restore the object to a former or '
+            'alternative state.  If the key already exists, then it\'s current '
+            'value will be used as the toggle value.  If the key does not '
+            'already exist, a new key will be created with the default object '
+            'state (with no shape keys) will be used as the toggle value'
+        ),
+        options=set(),
+        search=non_default_shape_key_search_cb,
+    )
+
+    PROP_NAME_SK_INVERT_REMOVE_MERGED = 'shape_key_inversion_remove_merged'
+
+    shape_key_inversion_remove_merged: bpy.props.BoolProperty(
+        name='Removed New Basis',
+        description=(
+            'Whether the \'New Basis\' shape key should be removed from this '
+            'object once the invert operation has been successfully completed'
+        ),
+        options=set(),
+        default=True,
+    )
+
+    PROP_NAME_SK_INVERT_CREATE_COPY = 'shape_key_inversion_create_copy'
+
+    shape_key_inversion_create_copy: bpy.props.BoolProperty(
+        name='Create New',
+        description=(
+            'Whether this operation should create a new object on which to '
+            'perform the changes, leaving this object unchanged'
+        ),
+        options=set(),
+        default=True,
+    )
+
+    #
+    # endregion Shape Key Inversion
 
     # region Shape Key Sync
     #

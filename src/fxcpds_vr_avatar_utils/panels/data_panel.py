@@ -1,8 +1,8 @@
-from ..operators import BoneRotationNormalizeOp, ShapeKeyRenameOp, ShapeKeySyncOp
+from ..operators import BoneRotationNormalizeOp, ShapeKeyInvertOp, ShapeKeyRenameOp, ShapeKeySyncOp
 from ..properties import get_property_group, PluginProperties
 from ..utils import Compatibility
 
-from .aliases import ObjectType
+from .aliases import Context, ObjectType
 
 import bpy
 
@@ -15,10 +15,10 @@ class DataPanel(bpy.types.Panel):
     bl_context = "data"
 
     @classmethod
-    def poll(cls, context: bpy.context):
+    def poll(cls, context: Context):
         return context.object is not None and (context.object.type == 'MESH' or context.object.type == 'ARMATURE')
 
-    def draw(self, context: bpy.context):
+    def draw(self, context: Context):
         obj = context.object
         props = get_property_group()
 
@@ -46,7 +46,7 @@ def _draw_global_options(layout: bpy.types.UILayout, props: PluginProperties, ki
         row.prop(data=props, property=PluginProperties.PROP_NAME_LOCK_TO_SCENE)
 
 
-def _draw_for_mesh(context: bpy.context, layout: bpy.types.UILayout, props: PluginProperties) -> None:
+def _draw_for_mesh(context: Context, layout: bpy.types.UILayout, props: PluginProperties) -> None:
     _draw_sync_shape_keys(context, layout, props)
     layout.separator()
     _draw_rename_shape_keys(layout, props)
@@ -63,7 +63,7 @@ def _draw_for_pose(column: bpy.types.UILayout, props: PluginProperties):
     row.operator(BoneRotationNormalizeOp.bl_idname)
 
 
-def _draw_sync_shape_keys(context: bpy.context, layout: bpy.types.UILayout, props: PluginProperties) -> None:
+def _draw_sync_shape_keys(context: Context, layout: bpy.types.UILayout, props: PluginProperties) -> None:
     col = layout.box().column()
 
     col.label(text='Sync Shape Keys', icon='UV_SYNC_SELECT')
@@ -98,3 +98,21 @@ def _draw_rename_shape_keys(layout: bpy.types.UILayout, props: PluginProperties)
     right = row.column(align=True)
     right.label()
     right.operator(ShapeKeyRenameOp.bl_idname)
+
+
+def _draw_shape_key_inversion(layout: bpy.types.UILayout, props: PluginProperties) -> None:
+    col = layout.box().column()
+
+    col.label(text='Shape Key Inversion', icon='FILE_REFRESH')
+    col.separator()
+
+    col.prop(data=props, property=PluginProperties.PROP_NAME_SK_INVERT_BASIS)
+    col.prop(data=props, property=PluginProperties.PROP_NAME_SK_INVERT_TOGGLE)
+    col.separator()
+
+    row = col.row()
+    row.prop(data=props, property=PluginProperties.PROP_NAME_SK_INVERT_REMOVE_MERGED)
+    row.prop(data=props, property=PluginProperties.PROP_NAME_SK_INVERT_CREATE_COPY)
+    col.separator()
+
+    col.operator(ShapeKeyInvertOp.bl_idname)
