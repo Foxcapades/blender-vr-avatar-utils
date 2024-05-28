@@ -6,8 +6,6 @@
 :toc: left
 :link-skp: https://github.com/MichaelGlenMontague/shape_keys_plus[Shape Keys+]
 :abbr-vau: pass:[<abbr title="VR Avatar Utils">VAU</abbr>]
-:icon-screenshot: image:../common/icons/screenshot_icon.png[]
-:icon-exclamation: image:../common/icons/exclamation-icon.svg[width=18]
 :icon-dropdown: image:../common/icons/dropdown-icon.svg[]
 :icon-checkbox: image:../common/icons/checkbox-icon.svg[]
 :icon-textinput: image:../common/icons/textinput-icon.svg[]
@@ -15,7 +13,6 @@
 
 The following documents the options and features included in the VR Avatar Utils
 ({abbr-vau}) Blender addon.
-
 
 == Armature Operations
 
@@ -69,21 +66,24 @@ https://docs.blender.org/manual/en/latest/advanced/appendices/rotations.html[the
 --
 ====
 
+
+==== Screenshots
+
 [.image]
 [%collapsible]
-.{icon-screenshot} Rotation Mode Options
+.Rotation Mode Options
 ====
 image::img/bone-rotate-2.png[align=center]
 ====
 
 [%collapsible]
-.{icon-screenshot} Dry Run Results
+.Dry Run Results
 ====
 image::img/bone-rotate-3.png[align=center]
 ====
 
 [%collapsible]
-.{icon-screenshot} Live Run Results
+.Live Run Results
 ====
 image::img/bone-rotate-4.png[align=center]
 ====
@@ -171,13 +171,13 @@ the options specific to Shape Keys+.
 ==== Screenshots
 
 [%collapsible]
-.{icon-screenshot} Dry Run Results
+.Dry Run Results
 ====
 image::img/shape-key-sync-1.png[align=center]
 ====
 
 [%collapsible]
-.{icon-screenshot} Live Run Results
+.Live Run Results
 ====
 image::img/shape-key-sync-2.png[align=center]
 ====
@@ -273,25 +273,25 @@ its effects.
 ==== Screenshots
 
 [%collapsible]
-.{icon-screenshot} New Basis Key Selection
+.New Basis Key Selection
 ====
 image::img/sk-invert-1.png[align=center]
 ====
 
 [%collapsible]
-.{icon-screenshot} Set Toggle Key Name
+.Set Toggle Key Name
 ====
 image::img/sk-invert-2.png[align=center]
 ====
 
 [%collapsible]
-.{icon-screenshot} Dry Run Result
+.Dry Run Result
 ====
 image::img/sk-invert-3.png[align=center]
 ====
 
 [%collapsible]
-.{icon-screenshot} Live Run Result
+.Live Run Result
 ====
 image::img/sk-invert-4.png[align=center]
 ====
