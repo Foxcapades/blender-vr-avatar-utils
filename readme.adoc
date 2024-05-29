@@ -40,6 +40,12 @@ Allows inverting a shape key, making the shape key value the new basis and
 creating a new shape key which returns the object to its former basis state (or
 alternatively a custom toggle state).
 
+.YouTube Demo
+--
+image::https://img.youtube.com/vi/MoKPCiHkieA/0.jpg[link=https://youtu.be/MoKPCiHkieA]
+--
+
+
 
 ==== Rename Shape Keys
 
