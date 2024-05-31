@@ -4,7 +4,7 @@ bl_info = {
     "author":      "Elizabeth Paige Harper",
     "version":     (0, 2, 1),
     "category":    "Object",
-    "blender":     (4, 1, 1),
+    "blender":     (4, 1, 0),
 }
 
 from . import assets, operators, panels, properties, utils

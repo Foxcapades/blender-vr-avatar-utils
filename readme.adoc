@@ -8,10 +8,16 @@
 A growing collection of utilities that I have created to assist my workflows
 working on optimizing and creating custom content for VR avatars in Blender.
 
-link:https://foxcapades.github.io/blender-vr-avatar-utils/v{feature-version}/[📖 *Documentation*]
+image:https://img.shields.io/badge/blender-4.1-ff9f1c?logo=blender[Target Blender Version]
+image:https://img.shields.io/github/v/release/Foxcapades/blender-vr-avatar-utils?label=%F0%9F%A7%A9%20release&color=%23cbf3f0[Release Version, link={url-gh-repo}/releases/latest]
+image:https://img.shields.io/badge/%F0%9F%93%96%20docs-{feature-version}-ffbf69[Documentation, link=https://foxcapades.github.io/blender-vr-avatar-utils/v{feature-version}]
+image:https://img.shields.io/github/license/Foxcapades/blender-vr-avatar-utils?color=2ec4b6[License, link={url-gh-repo}/blob/main/license]
+
 
 Developed against Blender 4.1.1.  May technically be compatible with previous
 Blender versions but has not been tested on any.
+
+link:https://foxcapades.github.io/blender-vr-avatar-utils/v{feature-version}/[📖 *Documentation*]
 
 == Features
 
