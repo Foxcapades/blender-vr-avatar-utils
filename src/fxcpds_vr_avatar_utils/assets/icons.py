@@ -1,12 +1,9 @@
 from typing import Callable, TypeVar
-import bpy
 
 
 _icons: dict[str, str] = {
     'globe': 'globe.svg'
 }
-
-_index: bpy.utils.previews.ImagePreviewCollection | None = None
 
 
 T = TypeVar('T')
