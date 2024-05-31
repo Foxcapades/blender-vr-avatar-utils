@@ -7,16 +7,16 @@ bl_info = {
     "blender":     (4, 1, 1),
 }
 
-from . import operators
-from . import panels
-from . import properties
-from . import utils
+from . import assets, operators, panels, properties, utils
 
 
 def register() -> None:
+    import os
+
     properties.register_property_group()
     operators.register_operators()
     panels.register_panels()
+    assets.register(os.path.dirname(__file__))
 
 
 def unregister() -> None:

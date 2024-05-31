@@ -7,13 +7,13 @@ from b import BeztripleInterpolationMode, Bone, BoneColor
 from c import ColorRamp, Constraint, ConstraintType
 from f import FcurveAutoSmoothing
 from h import Header
-from i import IKParam
+from i import Icon, IKParam
 from k import KeyframeHandleType
 from m import MotionPath
 from n import NavigationMode
 from o import Object, ObjectRotationMode
 from r import RegionType
-from s import ScriptDirectoryCollection, SpaceType, StudioLights
+from s import ScriptDirectoryCollection, SpaceType, StudioLights, Struct
 from t import Theme, ThemeStyle
 from u import UILayout, UserExtensionRepoCollection, UserSolidLight
 from w import WalkNavigation
@@ -40,6 +40,59 @@ PreferenceSection = Literal[
 ]
 
 PropDynamicpaintType = Literal['CANVAS', 'BRUSH']
+
+PropertySubtype = Literal[
+    'NONE',
+    'FILE_PATH',
+    'DIR_PATH',
+    'FILE_NAME',
+    'BYTE_STRING',
+    'PASSWORD',
+    'PIXEL',
+    'UNSIGNED',
+    'PERCENTAGE',
+    'FACTOR',
+    'ANGLE',
+    'TIME',
+    'TIME_ABSOLUTE',
+    'DISTANCE',
+    'DISTANCE_CAMERA',
+    'POWER',
+    'TEMPERATURE',
+    'COLOR',
+    'TRANSLATION',
+    'DIRECTION',
+    'VELOCITY',
+    'ACCELERATION',
+    'MATRIX',
+    'EULER',
+    'QUATERNION',
+    'AXISANGLE',
+    'XYZ',
+    'XYZ_LENGTH',
+    'COLOR_GAMMA',
+    'COORDINATES',
+    'LAYER',
+    'LAYER_MEMBER',
+]
+
+PropertyType = Literal['BOOLEAN', 'INT', 'FLOAT', 'STRING', 'ENUM', 'POINTER', 'COLLECTION']
+
+PropertyUnit = Literal[
+    'NONE',
+    'LENGTH',
+    'AREA',
+    'VOLUME',
+    'ROTATION',
+    'TIME',
+    'TIME_ABSOLUTE',
+    'VELOCITY',
+    'ACCELERATION',
+    'MASS',
+    'CAMERA',
+    'POWER',
+    'TEMPERATURE',
+]
 
 ProportionalFalloff = Literal[
     'SMOOTH',
@@ -665,6 +718,88 @@ class PreferencesView(bpy_struct):  # NEW REGEX
     # noinspection PyPropertyDefinition
     @property
     def weight_color_range(self) -> ColorRamp: pass
+
+
+# noinspection PyPropertyDefinition
+class Property(bpy_struct):  # NEW REGEX
+    @property
+    def description(self) -> str: pass
+
+    @property
+    def icon(self) -> Icon: pass
+
+    @property
+    def identifier(self) -> str: pass
+
+    @property
+    def is_animatable(self) -> bool: pass
+
+    @property
+    def is_argument_optional(self) -> bool: pass
+
+    @property
+    def is_enum_flag(self) -> bool: pass
+
+    @property
+    def is_hidden(self) -> bool: pass
+
+    @property
+    def is_library_editable(self) -> bool: pass
+
+    @property
+    def is_never_none(self) -> bool: pass
+
+    @property
+    def is_output(self) -> bool: pass
+
+    @property
+    def is_overridable(self) -> bool: pass
+
+    @property
+    def is_path_output(self) -> bool: pass
+
+    @property
+    def is_readonly(self) -> bool: pass
+
+    @property
+    def is_registered(self) -> bool: pass
+
+    @property
+    def is_registered_optional(self) -> bool: pass
+
+    @property
+    def is_required(self) -> bool: pass
+
+    @property
+    def is_runtime(self) -> bool: pass
+
+    @property
+    def is_skip_preset(self) -> bool: pass
+
+    @property
+    def is_skip_save(self) -> bool: pass
+
+    @property
+    def name(self) -> str: pass
+
+    @property
+    def srna(self) -> Struct: pass
+
+    @property
+    def subtype(self) -> PropertySubtype: pass
+
+    @property
+    def tags(self) -> set[str]: pass
+
+    @property
+    def translation_context(self) -> str: pass
+
+    @property
+    def type(self) -> PropertyType: pass
+
+    @property
+    def unit(self) -> PropertyUnit: pass
+
 
 
 class PropertyGroup(bpy_struct):  # NEW REGEX

@@ -1,4 +1,4 @@
-from typing import Any, Callable, Generator, Literal, Sequence
+from typing import Any, Callable, Generator, Literal, Sequence, TypeVar
 import bpy as bpy
 
 PropertyFlag = Literal[
@@ -38,6 +38,7 @@ PropertySubtypeString = Literal[
     'NONE',
 ]
 
+P = TypeVar('P', bound=bpy.types.Property | bpy.types.PropertyGroup)
 
 # noinspection PyPep8Naming,PyDefaultArgument,PyUnusedLocal,PyShadowingBuiltins
 def BoolProperty(
@@ -66,11 +67,25 @@ def EnumProperty(
     options: set[PropertyFlag] = set('ANIMATABLE'),
     override: set[PropertyOverrideFlag] = set(),
     tags: set[str] = set(),
-    update: Callable[[Any, bpy.context], None] | None = None,
+    update: Callable[[Any, bpy.AnyContext], None] | None = None,
     get: Callable[[Any], str] | None = None,
     set: Callable[[Any, str], None] | None = None,
 ) -> type[str]:
     pass
+
+
+# noinspection PyUnusedLocal,PyShadowingBuiltins,PyDefaultArgument
+def PointerProperty(
+    type: type[P] = None,
+    name: str = '',
+    description: str = '',
+    translation_context: str = '*',
+    options: set[PropertyFlag] = {'ANIMATABLE'},
+    override: set[PropertyOverrideFlag] = set(),
+    tags: set[str] = set(),
+    poll: Callable[[type[P], bpy.AnyContext], bool] = None,
+    update: Callable[[type[P], bpy.AnyContext], None] = None,
+) -> P: pass
 
 
 # noinspection PyDefaultArgument,PyPep8Naming,PyUnusedLocal,PyShadowingBuiltins

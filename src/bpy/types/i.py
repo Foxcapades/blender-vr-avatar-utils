@@ -1012,3 +1012,20 @@ class IDPropertyGroupViewKeys(bpy_raw_collection[str]):
 
 class IDPropertyGroupViewValues(bpy_raw_collection[IDPropertyGroup]):
     pass
+
+
+# noinspection PyPropertyDefinition
+class ImagePreview(bpy_struct):  # NEW REGEX
+    icon_pixels: int
+    icon_pixels_float: float
+    icon_size: tuple[int, int]
+    image_pixels: int
+    image_pixels_float: float
+    image_size: tuple[int, int]
+    is_icon_custom: bool
+    is_image_custom: bool
+
+    @property
+    def icon_id(self) -> int: pass
+
+    def reload(self) -> None: pass

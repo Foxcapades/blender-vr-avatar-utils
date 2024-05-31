@@ -1,11 +1,12 @@
+import bpy
+
 try:
-    from bpy.types import o
-    from bpy import AnyContext
-
-    Context = AnyContext
-    ObjectType = o.ObjectType
+    Context = bpy.AnyContext
+    Icon = bpy.types.Icon
+    ObjectType = bpy.types.o.ObjectType
+    OperatorReturn = bpy.types.o.OperatorReturn
 except Exception:
-    import bpy
-
     Context = bpy.types.Context
+    Icon = str
     ObjectType = str
+    OperatorReturn = str

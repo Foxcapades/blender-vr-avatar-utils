@@ -570,5 +570,12 @@ class UILayout(bpy_struct):
     def introspect(self): pass
 
 
+class UIPopupMenu(bpy_struct):
+    # noinspection PyPropertyDefinition
+    @property
+    def layout(self) -> UILayout:
+        pass
+
+
 class UnknownType(bpy_struct):
     pass

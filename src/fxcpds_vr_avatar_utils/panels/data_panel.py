@@ -1,10 +1,12 @@
 from ..operators import BoneRotationNormalizeOp, ShapeKeyInvertOp, ShapeKeyRenameOp, ShapeKeySyncOp
 from ..properties import get_property_group, PluginProperties
-from ..utils import Compatibility, is_keyed_mesh
+from ..utils import compatibility, is_keyed_mesh
 
 from .aliases import Context, ObjectType
 
 import bpy
+
+from fxcpds_vr_avatar_utils.feat.mesh.shape_keys.sync import draw as __draw_shape_key_sync
 
 
 class DataPanel(bpy.types.Panel):
@@ -66,22 +68,7 @@ def _draw_for_pose(column: bpy.types.UILayout, props: PluginProperties):
 
 
 def _draw_sync_shape_keys(context: Context, layout: bpy.types.UILayout, props: PluginProperties) -> None:
-    col = layout.box().column()
-
-    col.label(text='Sync Shape Keys', icon='UV_SYNC_SELECT')
-
-    col.separator()
-    col.prop(data=props, property=PluginProperties.PROP_NAME_SYNC_IGNORE_MUTED)
-
-    if Compatibility.have_shape_keys_plus(context):
-        row = col.row()
-        row.prop(data=props, property=PluginProperties.PROP_NAME_SYNC_COMPAT_SKP_ONLY_FROM_SELECTED)
-        row.prop(data=props, property=PluginProperties.PROP_NAME_SYNC_COMPAT_SKP_ONLY_TO_SELECTED)
-    else:
-        col.prop(data=props, property=PluginProperties.PROP_NAME_SYNC_IGNORE_LOCKED)
-
-    col.separator()
-    col.operator(ShapeKeySyncOp.bl_idname)
+    __draw_shape_key_sync(layout, context)
 
 
 def _draw_rename_shape_keys(layout: bpy.types.UILayout, props: PluginProperties) -> None:

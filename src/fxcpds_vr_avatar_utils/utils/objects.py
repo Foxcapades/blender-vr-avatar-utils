@@ -13,6 +13,10 @@ class Keyed(Protocol):
     def shape_keys(self) -> Key: pass
 
 
+def require_key(obj: Object) -> Key:
+    return cast(Keyed, obj.data).shape_keys
+
+
 def count_shape_keys(obj: Object) -> int:
     if not (obj is not None and (obj.type == 'MESH' or obj.type == 'LATTICE' or obj.type == 'CURVE')):
         return 0
@@ -39,7 +43,16 @@ def is_usable_mesh(obj: Object) -> bool:
 
 
 def is_keyed_mesh(obj: Object) -> bool:
-    return is_usable_mesh(obj) and cast(bpy.types.Mesh, obj.data).shape_keys is not None
+    return is_usable_mesh(obj) and cast(Mesh, obj.data).shape_keys is not None
+
+
+def is_mesh_with_shape_keys(obj: Object) -> bool:
+    if not is_usable_mesh(obj):
+        return False
+
+    key = cast(Mesh, obj.data).shape_keys
+
+    return key is not None and len(key.key_blocks) > 0
 
 
 def select_only(obj: Object, ctx: Context) -> None:
