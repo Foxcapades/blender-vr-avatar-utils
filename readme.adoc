@@ -1,14 +1,14 @@
 = VR Avatar Utilities
 :icons: font
 
-:plugin-version: 0.2.0
+:feature-version: 0.2.0
 
 :url-gh-repo: https://github.com/Foxcapades/blender-vr-avatar-utils
 
 A growing collection of utilities that I have created to assist my workflows
 working on optimizing and creating custom content for VR avatars in Blender.
 
-link:https://foxcapades.github.io/blender-vr-avatar-utils/v{plugin-version}/[📖 *Documentation*]
+link:https://foxcapades.github.io/blender-vr-avatar-utils/v{feature-version}/[📖 *Documentation*]
 
 Developed against Blender 4.1.1.  May technically be compatible with previous
 Blender versions but has not been tested on any.
@@ -59,7 +59,7 @@ Allows mass renaming of shape keys across all meshes in the scene or file.
 General Blender Add-on information, see the https://docs.blender.org/manual/en/latest/editors/preferences/addons.html[Blender docs].
 
 . Download the {url-gh-repo}/releases/latest[latest release] zip file (named
-`fxcpds-vr-avatar-utils-v{plugin-version}.zip` or similar).
+`fxcpds-vr-avatar-utils-v{feature-version}.zip` or similar).
 
 . From Blender, open the Preferences window via *Edit > Preferences*.
 

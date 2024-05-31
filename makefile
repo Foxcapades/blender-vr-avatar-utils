@@ -10,4 +10,22 @@ build:
 
 .PHONY: docs
 docs:
-	@cd docs/v$(FEATURE_VERSION) && asciidoctor -o index.html index.adoc
+	@rm -f docs/index.adoc docs/index.html
+	@echo '= Addon Documentation Index' > links.adoc \
+	  && echo ':stylesdir: common/css' >> links.adoc \
+	  && echo ':stylesheet: slate.css' >> links.adoc \
+	  && echo '' >> links.adoc
+	@for i in `find docs -type f -name '*.adoc'`; do \
+	  dir=`dirname "$$i"`; \
+	  asciidoctor -o "$$dir/index.html" "$$i"; \
+	  if [ `basename "$$i"` = 'index.adoc' ]; then \
+	    version=`basename $$dir`; \
+        echo "* link:$$version/index.html[$$version]" >> links.adoc; \
+	  fi; \
+	done;
+	@mv links.adoc docs/index.adoc
+	@asciidoctor -o docs/index.html docs/index.adoc
+
+.PHONY: apply-version
+apply-version:
+	@sed -i 's#:feature-version: .\+#:feature-version: $(FEATURE_VERSION)#' readme.adoc

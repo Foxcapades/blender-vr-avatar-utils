@@ -1,0 +1,6 @@
+= Addon Documentation Index
+:stylesdir: common/css
+:stylesheet: slate.css
+
+* link:v0.1.0/index.html[v0.1.0]
+* link:v0.2.0/index.html[v0.2.0]

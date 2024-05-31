@@ -32,7 +32,7 @@ body{font-family: "Noto Sans",sans-serif;background-color: var(--maincolor);colo
 
 h1{color:var(--primarycolor) !important;font-family:"Noto Sans",sans-serif;}
 h2,h3,h4,h5,h6{color:var(--secondarycolor) !important;font-family:"Noto Sans",sans-serif;}
-.title{color:var(--white) !important;font-family:"Noto Sans",sans-serif;font-style: normal; font-weight: normal;}
+.title{color:var(--white);font-family:"Noto Sans",sans-serif;font-style: normal; font-weight: normal;}
 p{font-family: "Noto Sans",sans-serif ! important}
 #toc.toc2 a:link{color:var(--linkcolor);}
 blockquote{color:var(--tertiarycolor) !important}
@@ -79,7 +79,48 @@ video {
 }
 
 .imageblock > .title {
+  color: var(--off-white);
   text-align: center;
+}
+
+.videoblock > .title {
+  color: var(--off-white);
+  text-align: center;
+}
+
+.openblock.option {
+  margin: 2em;
+}
+
+.openblock.option:not(:last-child) {
+  border-bottom: 1px solid #39aee366;
+}
+
+.openblock > .title {
+  color: var(--off-white);
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: bold;
+}
+
+details > summary.title {
+  font-family: 'Noto Sans', sans-serif;
+  color: var(--linkcolor);
+  font-size: 1.25em;
+  font-style: normal;
+}
+
+.option > .title {
+  color: var(--white);
+  position: relative;
+  padding-left: 0.5em;
+}
+
+.option > .title img {
+  position: absolute;
+  left: -1.25em;
+  width: 1.25em;
 }
 
 .exampleblock > .content {
@@ -656,7 +697,7 @@ been selected on target objects via the Shape Keys+ panel.</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-05-22 17:21:26 -0400
+Last updated 2024-05-28 17:31:42 -0400
 </div>
 </div>
 </body>
