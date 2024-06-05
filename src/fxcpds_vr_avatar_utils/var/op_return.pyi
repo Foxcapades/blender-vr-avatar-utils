@@ -1,5 +1,5 @@
-from ..utils.aliases import OperatorReturn
+from .. import lib
 
-CANCELLED: OperatorReturn
+CANCELLED: lib.xbpy.aliases.OperatorReturn
 
-FINISHED: OperatorReturn
+FINISHED: lib.xbpy.aliases.OperatorReturn

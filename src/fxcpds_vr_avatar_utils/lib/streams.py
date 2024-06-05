@@ -1,16 +1,16 @@
-from typing import cast, Generator, Iterable
+from typing import cast, Iterable
 
 from bpy.types import Mesh, Object, Scene
 
 from .xbpy import KeyRef, MeshRef, ObjectRef
 
 
-def scene_to_objects(input: Scene) -> Generator[ObjectRef, None, None]:
+def scene_to_objects(input: Scene) -> Iterable[ObjectRef]:
     for obj in input.objects:
         yield ObjectRef(obj, scene=input)
 
 
-def scenes_to_objects(input: Iterable[Scene], distinct: bool = False) -> Generator[ObjectRef, None, None]:
+def scenes_to_objects(input: Iterable[Scene], distinct: bool = False) -> Iterable[ObjectRef]:
     if distinct:
         names: set[str] = set()
 
@@ -27,7 +27,7 @@ def scenes_to_objects(input: Iterable[Scene], distinct: bool = False) -> Generat
     return None
 
 
-def objects_to_meshes(input: Iterable[Object | ObjectRef], distinct: bool = False) -> Generator[MeshRef, None, None]:
+def objects_to_meshes(input: Iterable[Object | ObjectRef], distinct: bool = False) -> Iterable[MeshRef]:
     if distinct:
         names: set[str] = set()
 
@@ -58,7 +58,7 @@ def objects_to_meshes(input: Iterable[Object | ObjectRef], distinct: bool = Fals
     return None
 
 
-def meshes_to_keys(input: Iterable[Mesh | MeshRef], distinct: bool = False) -> Generator[KeyRef, None, None]:
+def meshes_to_keys(input: Iterable[Mesh | MeshRef], distinct: bool = False) -> Iterable[KeyRef]:
     if distinct:
         names: set[str] = set()
 

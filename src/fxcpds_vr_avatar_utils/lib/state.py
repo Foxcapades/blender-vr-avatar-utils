@@ -1,5 +1,5 @@
 from contextlib import contextmanager
-from typing import ContextManager, Self
+from typing import cast, ContextManager, Self
 
 from .xbpy import Context
 
@@ -19,4 +19,4 @@ class FxStateAccessor:
     @contextmanager
     def with_override(self, **kwargs) -> ContextManager[Self]:
         with self.context.temp_override(**kwargs) as ctx:
-            yield self.from_current_context(ctx)
+            yield self.from_current_context(cast(Context, ctx))

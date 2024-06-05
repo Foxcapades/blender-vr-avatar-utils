@@ -3,10 +3,18 @@ PLUGIN_VERSION = $(shell grep '"version"' src/$(PLUGIN_NAME)/__init__.py | sed '
 FEATURE_VERSION = $(shell grep '"version"' src/$(PLUGIN_NAME)/__init__.py | sed 's/.\+\([0-9]\+\), *\([0-9]\+\), *\([0-9]\+\).\+/\1.\2.0/g')
 ZIP_NAME = fxcpds-vr-avatar-utils-v$(PLUGIN_VERSION).zip
 
+BUILD_DIR = "build"
+STAGING_DIR = "$(BUILD_DIR)/staging"
+ARCHIVE_DIR = "$(BUILD_DIR)/release"
+
 .PHONY: build
 build:
-	@mkdir -p build
+	@mkdir -p $(STAGING_DIR) $(ARCHIVE_DIR)
 	@cd src && zip -r $(ZIP_NAME) $(PLUGIN_NAME) && mv $(ZIP_NAME) ../build
+
+.PHONY: clean
+clean:
+	@rm -rf "$(BUILD_DIR)"
 
 .PHONY: docs
 docs:

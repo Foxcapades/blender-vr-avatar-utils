@@ -1,4 +1,4 @@
-from ..lib.xbpy import ObjectType
+from ..lib.xbpy.aliases import ObjectType
 
 ARMATURE: ObjectType = 'ARMATURE'
 CURVE: ObjectType = 'CURVE'

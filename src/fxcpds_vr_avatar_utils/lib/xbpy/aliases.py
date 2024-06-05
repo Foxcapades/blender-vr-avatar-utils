@@ -1,6 +1,5 @@
 import bpy
 
-
 try:
     Context = bpy.AnyContext
     Icon = bpy.types.Icon
