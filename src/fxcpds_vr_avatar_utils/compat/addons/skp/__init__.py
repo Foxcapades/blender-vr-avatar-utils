@@ -1,17 +1,18 @@
 from . import v2
 from . import interface
 
-import bpy
 import sys
+
+from ....lib.xbpy import Context
 
 
 class ShapeKeysPlus:
     @staticmethod
-    def is_available(context: bpy.context) -> bool:
+    def is_available(context: Context) -> bool:
         return 'shape_keys_plus' in context.preferences.addons
 
     @staticmethod
-    def load(context: bpy.context) -> interface.ShapeKeysPlus:
+    def load(context: Context) -> interface.ShapeKeysPlus:
         info = sys.modules['shape_keys_plus'].bl_info
 
         if info['version'][0] == 2:

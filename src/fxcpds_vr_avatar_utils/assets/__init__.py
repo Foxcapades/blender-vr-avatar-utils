@@ -1,13 +1,14 @@
-from . import icons as _icons
-
-
-icons = _icons.Icons()
+from ._icons import icons
+del _icons
 
 
 def register(addon_path: str) -> None:
     import os
 
-    global icons
-
+    # noinspection PyUnresolvedReferences,PyProtectedMember
     icons._init(os.path.join(addon_path, 'assets'))
 
+
+def unregister() -> None:
+    # noinspection PyUnresolvedReferences,PyProtectedMember
+    icons._destroy()

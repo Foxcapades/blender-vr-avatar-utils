@@ -2,3 +2,4 @@
 .idea/
 build/
 docs/**/*.html
+__pycache__/
