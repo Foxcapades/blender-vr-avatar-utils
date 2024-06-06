@@ -10,14 +10,16 @@ bl_info = {
 
 def register() -> None:
     import os
-    from . import assets, addon
+    from .python import features
+    from .python.lib import assets
 
     assets.register(os.path.dirname(__file__))
-    addon.register()
+    features.register()
 
 
 def unregister() -> None:
-    from . import assets, addon
+    from .python import features
+    from .python.lib import assets
 
-    addon.unregister()
+    features.unregister()
     assets.unregister()

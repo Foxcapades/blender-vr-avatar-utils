@@ -1,4 +1,4 @@
-from typing import Any, Callable, Generator, Literal, Sequence, TypeVar
+from typing import Any, Callable, Iterable, Literal, Sequence, TypeVar
 import bpy as bpy
 
 
@@ -64,7 +64,7 @@ def BoolProperty(
 
 # noinspection PyUnusedLocal,PyDefaultArgument,PyShadowingBuiltins
 def EnumProperty(
-    items: Sequence[tuple[str, str, str, str, str]] | Sequence[tuple[str, str, str, str]] | Sequence[tuple[str, str, str]] | Callable[[Any, bpy.context | None], Sequence[tuple[str, str, str, str, str]] | Sequence[tuple[str, str, str, str]] | Sequence[tuple[str, str, str]]],
+    items: Sequence[tuple[str, str, str, str, str]] | Sequence[tuple[str, str, str, str]] | Sequence[tuple[str, str, str]] | Callable[[Any, bpy.AnyContext | None], Sequence[tuple[str, str, str, str, str]] | Sequence[tuple[str, str, str, str]] | Sequence[tuple[str, str, str]]],
     name: str = '',
     description: str = '',
     translation_context: str = '*',
@@ -128,9 +128,6 @@ def StringProperty(
     update: Callable[[Any, bpy.context], None] | None = None,
     get: Callable[[Any], str] | None = None,
     set: Callable[[Any, str], None] | None = None,
-    search: Callable[
-        [Any, bpy.context, str],
-        Sequence[str | tuple[str, str]] | Generator[str | tuple[str, str], Any, Any]
-    ] | None = None,
+    search: Callable[[Any, bpy.context, str], Iterable[str | tuple[str, str]]] | None = None,
     search_options: set[Literal['SORT', 'SUGGESTION']] = set('SUGGESTION'),
 ) -> type[str]: pass

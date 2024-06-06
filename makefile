@@ -3,14 +3,25 @@ PLUGIN_VERSION = $(shell grep '"version"' src/$(PLUGIN_NAME)/__init__.py | sed '
 FEATURE_VERSION = $(shell grep '"version"' src/$(PLUGIN_NAME)/__init__.py | sed 's/.\+\([0-9]\+\), *\([0-9]\+\), *\([0-9]\+\).\+/\1.\2.0/g')
 ZIP_NAME = fxcpds-vr-avatar-utils-v$(PLUGIN_VERSION).zip
 
-BUILD_DIR = "build"
+ROOT_DIR = "$(PWD)"
+BUILD_DIR = "$(ROOT_DIR)/build"
 STAGING_DIR = "$(BUILD_DIR)/staging"
 ARCHIVE_DIR = "$(BUILD_DIR)/release"
 
+.ONESHELL:
+.SHELLFLAGS += -e
+
 .PHONY: build
-build:
+build: clean build-docker
 	@mkdir -p $(STAGING_DIR) $(ARCHIVE_DIR)
-	@cd src && zip -r $(ZIP_NAME) $(PLUGIN_NAME) && mv $(ZIP_NAME) ../build
+	@cd src
+	@cp --parents -t "$(STAGING_DIR)" $$(find fxcpds_vr_avatar_utils -type f -name '*.py')
+	@cd ..
+	@docker run --rm -v "$(BUILD_DIR):/tmp/workspace" fxcpds-py3-11:latest pyminify --in-place --rename-globals staging/
+	@cp -rt "$(STAGING_DIR)"/fxcpds_vr_avatar_utils assets
+	@cd "$(STAGING_DIR)"
+	@zip -r "$(ZIP_NAME)" fxcpds_vr_avatar_utils
+	@mv "$(ZIP_NAME)" $(ARCHIVE_DIR)
 
 .PHONY: clean
 clean:
@@ -37,3 +48,7 @@ docs:
 .PHONY: apply-version
 apply-version:
 	@sed -i 's#:feature-version: .\+#:feature-version: $(FEATURE_VERSION)#' readme.adoc
+
+.PHONY: build-docker
+build-docker:
+	@docker inspect -f='1' fxcpds-py3-11:latest >/dev/null 2>&1 || docker build -f dockerfile -t fxcpds-py3-11:latest .
