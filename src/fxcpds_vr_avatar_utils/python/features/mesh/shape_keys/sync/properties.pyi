@@ -1,6 +1,6 @@
 from .... import properties
 
-class SyncPropertyGroup(properties.EphemeralProperties):
+class SyncPropertyGroup(properties.ephemeral.EphemeralProperties):
     ignore_muted: bool
     ignore_locked: bool
     skp_only_from_selected: bool

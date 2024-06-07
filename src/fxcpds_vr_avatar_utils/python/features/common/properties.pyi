@@ -1,5 +1,5 @@
 from .. import properties
 
-class FxGlobalProperties(properties.EphemeralProperties):
+class FxGlobalProperties(properties.ephemeral.EphemeralProperties):
     dry_run: bool
     lock_to_scene: bool

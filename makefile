@@ -17,7 +17,7 @@ build: clean build-docker
 	@cd src
 	@cp --parents -t "$(STAGING_DIR)" $$(find fxcpds_vr_avatar_utils -type f -name '*.py')
 	@cd ..
-	@docker run --rm -v "$(BUILD_DIR):/tmp/workspace" fxcpds-py3-11:latest pyminify --in-place --rename-globals staging/
+	@docker run --rm -v "$(BUILD_DIR):/tmp/workspace" fxcpds-py3-11:latest pyminify --in-place staging/
 	@cp -rt "$(STAGING_DIR)"/fxcpds_vr_avatar_utils assets
 	@cd "$(STAGING_DIR)"
 	@zip -r "$(ZIP_NAME)" fxcpds_vr_avatar_utils

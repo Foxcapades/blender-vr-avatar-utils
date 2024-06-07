@@ -1,9 +1,11 @@
 from bpy.props import BoolProperty
 
-from ....properties import EphemeralProperties
+from ....properties import ephemeral
 
 
-class SyncPropertyGroup(EphemeralProperties):
+class SyncPropertyGroup(ephemeral.EphemeralProperties):
+    name = "sk_sync_props"
+
     # noinspection PyTypeHints
     ignore_muted: BoolProperty(
         name='Ignore Muted',

@@ -1,5 +1,5 @@
 from bpy.types import Object
-from fxcpds_vr_avatar_utils.python.var import obj_type
+from ....var import obj_type
 from .keys import require_key
 from .shape_keys import has_shape_keys
 
@@ -16,4 +16,3 @@ def is_mesh(obj: Object) -> bool:
 
 def is_mesh_with_shape_keys(obj: Object) -> bool:
     return is_mesh(obj) and has_shape_keys(obj)
-

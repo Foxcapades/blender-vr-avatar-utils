@@ -1,11 +1,14 @@
-import abc
-
-
-class Registrable(abc.ABC):
+class Registrable:
+    # NOTE: DO NOT NAME THIS METHOD "register", THE BLENDER API CALLS THAT
+    #       METHOD IF IT EXISTS.
     @classmethod
-    @abc.abstractmethod
-    def register(cls) -> None: pass
+    def register_class(cls) -> None:
+        import bpy.utils
+        bpy.utils.register_class(cls)
 
+    # NOTE: DO NOT NAME THIS METHOD "unregister", THE BLENDER API CALLS THAT
+    #       METHOD IF IT EXISTS.
     @classmethod
-    @abc.abstractmethod
-    def unregister(cls) -> None: pass
+    def unregister_class(cls) -> None:
+        from .xbpy.utils import silent_unregister_class
+        silent_unregister_class(cls)

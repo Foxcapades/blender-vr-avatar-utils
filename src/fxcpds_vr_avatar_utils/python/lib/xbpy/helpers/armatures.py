@@ -1,6 +1,6 @@
 from typing import cast
 from bpy.types import Armature, Object
-from fxcpds_vr_avatar_utils.python.var import obj_type
+from ....var import obj_type
 
 __all__ = ['is_armature', 'is_usable_armature', 'has_bones', 'to_armature']
 

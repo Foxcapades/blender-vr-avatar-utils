@@ -39,4 +39,3 @@ class Result(typing.Generic[R, E]):
     @classmethod
     def of_value(cls, value: R) -> 'Result[R, E]':
         return cls(value, None, True)
-

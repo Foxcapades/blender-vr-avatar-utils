@@ -1,10 +1,10 @@
 from bpy.props import BoolProperty, StringProperty
 
 from .....lib.xbpy import shape_keys
-from ....properties import EphemeralProperties
+from ....properties import ephemeral
 
 
-class InvertPropertyGroup(EphemeralProperties):
+class InvertPropertyGroup(ephemeral.EphemeralProperties):
     name = 'sk_inversion_form'
 
     # noinspection PyTypeHints

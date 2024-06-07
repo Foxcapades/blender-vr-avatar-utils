@@ -1,6 +1,6 @@
 import abc, enum, typing
 import bpy
-import fxcpds_vr_avatar_utils
+from .. import lib
 
 
 class UIComponentType(enum.Enum):
@@ -11,33 +11,27 @@ class UIComponentType(enum.Enum):
 class UIComponent(abc.ABC):
     type: UIComponentType
     title: str
-    icon: fxcpds_vr_avatar_utils.lib.xbpy.Icon | int | None
+    icon: lib.xbpy.Icon | int | None
 
     @classmethod
-    def should_be_drawn(cls, context: fxcpds_vr_avatar_utils.lib.xbpy.Context) -> bool: pass
+    def should_be_drawn(cls, context: lib.xbpy.Context) -> bool: pass
 
     @classmethod
-    def should_be_enabled(cls, context: fxcpds_vr_avatar_utils.lib.xbpy.Context) -> bool: pass
+    def should_be_enabled(cls, context: lib.xbpy.Context) -> bool: pass
 
     @classmethod
     @abc.abstractmethod
-    def draw(cls, layout: bpy.types.UILayout, context: fxcpds_vr_avatar_utils.lib.xbpy.Context) -> None: pass
+    def draw(cls, layout: bpy.types.UILayout, context: lib.xbpy.Context) -> None: pass
 
 
-class UISubPanel(abc.ABC, UIComponent, bpy.types.Panel, fxcpds_vr_avatar_utils.bases.Registrable):
+class UISubPanel(abc.ABC, UIComponent, bpy.types.Panel, lib.registry.Registrable):
     open_by_default: bool
-
-    @classmethod
-    def register(cls) -> None: pass
-
-    @classmethod
-    def unregister(cls) -> None: pass
 
 
 class UIPanelBody(abc.ABC):
     @classmethod
     @abc.abstractmethod
-    def ui_components(cls, context: fxcpds_vr_avatar_utils.lib.xbpy.Context) -> typing.Iterable[UIComponent]:
+    def ui_components(cls, context: lib.xbpy.Context) -> typing.Iterable[UIComponent]:
         """
         Returns an iterable over child components under this panel body.
 
@@ -53,7 +47,7 @@ class UIPanelBody(abc.ABC):
         pass
 
     @classmethod
-    def should_be_drawn(cls, context: fxcpds_vr_avatar_utils.lib.xbpy.Context) -> bool: pass
+    def should_be_drawn(cls, context: lib.xbpy.Context) -> bool: pass
 
     @classmethod
-    def draw(cls, layout: bpy.types.UILayout, context: fxcpds_vr_avatar_utils.lib.xbpy.Context) -> None: pass
+    def draw(cls, layout: bpy.types.UILayout, context: lib.xbpy.Context) -> None: pass

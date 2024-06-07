@@ -1,10 +1,10 @@
 from bpy.props import StringProperty
 
 from .....lib.xbpy import shape_keys
-from ....properties import EphemeralProperties
+from ....properties import ephemeral
 
 
-class RenamePropertyGroup(EphemeralProperties):
+class RenamePropertyGroup(ephemeral.EphemeralProperties):
     name = "sk_rename_form"
 
     # noinspection PyTypeHints

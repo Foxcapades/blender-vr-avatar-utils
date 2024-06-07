@@ -2,7 +2,7 @@ from bpy.props import BoolProperty
 from .. import properties
 
 
-class FxGlobalProperties(properties.EphemeralProperties):
+class FxGlobalProperties(properties.ephemeral.EphemeralProperties):
     name = 'global_props'
 
     # noinspection PyTypeHints

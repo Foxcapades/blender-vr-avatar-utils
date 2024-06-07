@@ -7,12 +7,12 @@ ui = ui.UIBox
 def register() -> None:
     from . import operation, properties
 
-    properties.BoneRotationPropertyGroup.register()
-    operation.BoneRotationOp.register()
+    properties.BoneRotationPropertyGroup.register_class()
+    operation.BoneRotationOp.register_class()
 
 
 def unregister() -> None:
     from . import operation, properties
 
-    operation.BoneRotationOp.unregister()
-    properties.BoneRotationPropertyGroup.unregister()
+    operation.BoneRotationOp.unregister_class()
+    properties.BoneRotationPropertyGroup.unregister_class()

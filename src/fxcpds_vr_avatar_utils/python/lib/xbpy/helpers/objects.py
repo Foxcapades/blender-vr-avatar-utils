@@ -1,4 +1,4 @@
-import bpy.ops.object
+import bpy
 from bpy.types import Object
 from ..aliases import Context
 

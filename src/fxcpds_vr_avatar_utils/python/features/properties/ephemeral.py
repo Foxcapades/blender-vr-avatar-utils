@@ -2,7 +2,7 @@ import typing
 
 from bpy.types import WindowManager
 
-from fxcpds_vr_avatar_utils.python.lib import AddonProperties
+from fxcpds_vr_avatar_utils.python.lib.properties import AddonProperties
 
 
 class EphemeralPropertyContainer(AddonProperties[WindowManager]):

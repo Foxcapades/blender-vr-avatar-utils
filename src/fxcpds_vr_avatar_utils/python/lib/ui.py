@@ -2,10 +2,9 @@ from abc import abstractmethod, ABC
 from enum import auto, Enum
 from typing import cast, Iterable
 
-from bpy.types import Panel, UILayout
+from bpy.types import UILayout
 
-from .registry import Registrable
-from .xbpy import Icon, Context
+from .xbpy import Icon, Context, Panel
 
 
 class UIComponentType(Enum):
@@ -36,18 +35,19 @@ class UIComponent(ABC):
         pass
 
 
-class UISubPanel(ABC, UIComponent, Panel, Registrable):
+class _UISubPanel(type(UIComponent), type(Panel)): pass
+
+
+class UISubPanel(UIComponent, Panel, ABC, metaclass=_UISubPanel):
     open_by_default = False
 
     @classmethod
     def register(cls) -> None:
-        import bpy.utils
-        bpy.utils.register_class(cls)
-
-    @classmethod
-    def unregister(cls) -> None:
-        import fxcpds_vr_avatar_utils.python.lib.xbpy
-        fxcpds_vr_avatar_utils.lib.xbpy.silent_unregister_class(cls)
+        """
+        This is here just to override the ABC.register classmethod to avoid
+        errors from Blender's register_class method calling it.
+        """
+        pass
 
 
 class UIPanelBody(ABC):

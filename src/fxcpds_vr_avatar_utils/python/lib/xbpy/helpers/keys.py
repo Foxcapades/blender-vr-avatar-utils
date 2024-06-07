@@ -1,6 +1,6 @@
 from typing import cast, Protocol
 from bpy.types import Key, Object
-from fxcpds_vr_avatar_utils.python.var import obj_type
+from ....var import obj_type
 
 __all__ = ['is_keyed', 'require_key']
 

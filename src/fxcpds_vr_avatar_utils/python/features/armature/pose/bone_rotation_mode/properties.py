@@ -1,9 +1,9 @@
 from bpy.props import EnumProperty
 
-from ....properties import EphemeralProperties
+from ....properties import ephemeral
 
 
-class BoneRotationPropertyGroup(EphemeralProperties):
+class BoneRotationPropertyGroup(ephemeral.EphemeralProperties):
     name = 'brmn_props'
 
     # noinspection PyTypeHints,PyProtocol

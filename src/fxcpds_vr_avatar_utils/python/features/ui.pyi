@@ -1,4 +1,4 @@
-import fxcpds_vr_avatar_utils.python.lib.xbpy.extensions
+from .. import lib
 
-class FxPropsPanel(fxcpds_vr_avatar_utils.python.lib.xbpy.extensions.Panel):
+class FxPropsPanel(lib.xbpy.extensions.Panel):
     pass

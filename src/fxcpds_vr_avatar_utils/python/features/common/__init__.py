@@ -3,9 +3,9 @@ from .state import FxGlobalStateAccessor
 
 def register() -> None:
     from .properties import FxGlobalProperties
-    FxGlobalProperties.register()
+    FxGlobalProperties.register_class()
 
 
 def unregister() -> None:
     from .properties import FxGlobalProperties
-    FxGlobalProperties.unregister()
+    FxGlobalProperties.unregister_class()

@@ -3,8 +3,8 @@ from typing import Iterable
 from bpy.types import UILayout
 
 from ...lib.ui import UIPanelBody, UIComponent
-from ...lib.xbpy import shape_keys, Context
-from fxcpds_vr_avatar_utils.python.var import obj_type
+from ...lib.xbpy import shape_keys as sk, Context
+from ...var import obj_type
 from . import shape_keys
 
 
@@ -21,7 +21,7 @@ class MeshPanel(UIPanelBody):
 
     @classmethod
     def draw(cls, layout: UILayout, context: Context) -> None:
-        if not shape_keys.has_shape_keys(context.object):
+        if not sk.has_shape_keys(context.object):
             layout.label(text="Add shape keys to this mesh to enabled VR Avatar Util operations.")
         else:
             super().draw(layout, context)

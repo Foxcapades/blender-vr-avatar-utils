@@ -1,2 +1,1 @@
-from . import compat, operators, registry, state, ui, xbpy, xpy
-
+from . import compat, operators, properties, registry, state, ui, xbpy, xpy

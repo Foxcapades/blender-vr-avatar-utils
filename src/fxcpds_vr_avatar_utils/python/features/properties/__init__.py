@@ -1,10 +1,9 @@
-from .ephemeral import EphemeralProperties, EphemeralPropertyContainer
-del ephemeral
+from . import ephemeral
 
 
-def register():
-    EphemeralPropertyContainer.register()
+def register() -> None:
+    ephemeral.EphemeralPropertyContainer.register_class()
 
 
-def unregister():
-    EphemeralPropertyContainer.unregister()
+def unregister() -> None:
+    ephemeral.EphemeralPropertyContainer.unregister_class()

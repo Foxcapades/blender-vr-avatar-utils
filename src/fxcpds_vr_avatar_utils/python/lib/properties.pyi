@@ -12,10 +12,10 @@ class AddonProperties(bpy.types.PropertyGroup, registry.Registrable, typing.Gene
     target_type: type[P]
 
     @classmethod
-    def register(cls) -> None: pass
+    def register_class(cls) -> None: pass
 
     @classmethod
-    def unregister(cls) -> None: pass
+    def unregister_class(cls) -> None: pass
 
     @classmethod
     def get_from(cls, kind: P) -> typing.Self: pass

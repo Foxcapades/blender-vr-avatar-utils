@@ -7,6 +7,7 @@ from .....lib.operators import FxOperator
 from .....lib.xbpy import meshes, Context, Icon, KeyRef, OperatorReturn
 from .....lib.compat import addons
 from .....lib import streams
+from .....var import op_return
 from .state import State
 
 
@@ -24,7 +25,7 @@ class SyncOperator(FxOperator):
 
     def execute(self, context: Context) -> set[OperatorReturn]:
         if not self.is_runnable(context.object):
-            return {'CANCELLED'}
+            return {op_return.CANCELLED}
 
         sync_context = _SyncContext(context)
         changes = _execute(sync_context)
@@ -40,11 +41,11 @@ class SyncOperator(FxOperator):
         if sync_context.dry_run:
             icon = 'QUESTION'
             title = 'Operation Plan'
-            result = 'CANCELLED'
+            result = op_return.CANCELLED
         else:
             icon = 'INFO'
             title = 'Operation Result'
-            result = 'FINISHED'
+            result = op_return.FINISHED
 
         context.window_manager.popup_menu(draw, title=title, icon=icon)
 
